@@ -70,7 +70,7 @@ private:
   void drawSparkles(unsigned long now);
   void drawSilly(uint8_t v);
   void drawXEye(int cx, int cy);
-  void drawBigWaterText();
+  void drawBigWaterText(unsigned long now);
 
   unsigned long randRange(unsigned long lo, unsigned long hi);
   int8_t randRangeI8(int8_t lo, int8_t hi);

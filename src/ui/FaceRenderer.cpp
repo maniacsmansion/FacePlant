@@ -164,7 +164,7 @@ void FaceRenderer::renderNormal(unsigned long now) {
     else drawEyesSmallPupils(6, 0, 0);
     drawBrowsVerySad();
     drawMouthFrown();
-    drawBigWaterText();
+    drawBigWaterText(now);
   }
   else {
     if (_blinking) drawEyesClosed();
@@ -259,9 +259,17 @@ void FaceRenderer::drawXEye(int cx, int cy) {
   d.drawLine(cx - 6, cy + 6, cx + 6, cy - 6, 1);
 }
 
-void FaceRenderer::drawBigWaterText() {
+void FaceRenderer::drawBigWaterText(unsigned long now) {
   auto &d = _display->oled();
+  const char* msg = ((now / 2200UL) % 2UL == 0UL) ? "Need...water..." : "So...thirsty...";
   d.setTextSize(1);
-  d.setCursor(38, 56);
-  d.print("WATER?");
+  d.setTextColor(1);
+
+  int16_t x1 = 0, y1 = 0;
+  uint16_t w = 0, h = 0;
+  d.getTextBounds(msg, 0, 0, &x1, &y1, &w, &h);
+
+  int16_t x = (int16_t)((128 - (int)w) / 2);
+  d.setCursor(x < 0 ? 0 : x, 56);
+  d.print(msg);
 }

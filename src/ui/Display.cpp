@@ -42,11 +42,20 @@ void Display::bootAnimation() {
     _oled.display();
     delay(60);
   }
+  
+// Name + version (keep on screen for ~3 seconds total)
+_oled.setTextSize(1);
+_oled.setTextColor(1);
 
-  _oled.setTextSize(1);
-  _oled.setTextColor(1);
-  _oled.setCursor(34, 56);
-  _oled.print("FacePlant");
-  _oled.display();
-  delay(350);
+_oled.setCursor(34, 50);
+_oled.print("FacePlant");
+
+_oled.setCursor(44, 58);
+_oled.print("v");
+_oled.print(PB_VERSION);
+
+_oled.display();
+
+// The animation above already takes ~0.9s; hold this screen ~2.1s more.
+delay(2100);
 }
