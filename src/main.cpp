@@ -1,18 +1,11 @@
-#include <Arduino.h>
+#include "app/App.h"
 
-// put function declarations here:
-int myFunction(int, int);
+App app;
 
 void setup() {
-  // put your setup code here, to run once:
-  int result = myFunction(2, 3);
+  app.setup();
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-}
-
-// put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
+  app.loop();
 }
