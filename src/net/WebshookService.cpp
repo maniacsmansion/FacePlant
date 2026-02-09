@@ -28,7 +28,7 @@ bool WebhookService::send(PlantEventType type, const MoistureSensor& moisture, b
   if (!http.begin(url)) return false;
   http.addHeader("Content-Type", "application/json");
 
-  StaticJsonDocument<768> doc;
+  JsonDocument doc;
   doc["device"] = "FacePlant";
   doc["hostname"] = String(PB_HOSTNAME) + ".local";
   doc["version"] = PB_VERSION;

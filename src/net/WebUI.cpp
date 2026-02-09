@@ -43,7 +43,7 @@ void WebUI::begin(Settings& settings,
   });
 
   _server.on("/status", HTTP_GET, [&]() {
-    StaticJsonDocument<512> doc;
+    JsonDocument doc;
     doc["device"] = "FacePlant";
     doc["version"] = PB_VERSION;
     doc["ip"] = wifi.ip().toString();
